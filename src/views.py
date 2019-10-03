@@ -1,6 +1,8 @@
 from json import JSONDecodeError
 
+import aiohttp
 from aiohttp import web
+from aiohttp.web_request import Request
 
 from models import create_store_dump, get_store_dump
 
@@ -34,3 +36,14 @@ async def repeat_request(request):
         "data": data
     }
     return web.json_response(status=200, data=response)
+
+
+async def proxy_request(request: Request):
+    print(request._message)
+    print(request.match_info.get('tail'))
+
+    # async with aiohttp.ClientSession() as client:
+    #     html = await fetch(client)
+    #     print(html)
+
+    return web.json_response(status=200, data="proxy")

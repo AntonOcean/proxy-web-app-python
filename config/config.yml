@@ -1,8 +1,9 @@
 mongo:
   host: 127.0.0.1
   port: 27017
-  database: "gift_shop"
+  database: "proxy_requests_dumps"
   max_pool_size: 5
 
 host: 0.0.0.0
 port: 8080
+proxy-port: 9090

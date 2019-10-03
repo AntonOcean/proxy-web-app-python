@@ -20,6 +20,7 @@ config_template = t.Dict({
     }),
     t.Key('host'): t.Regexp(regexp=r'^\d+.\d+.\d+.\d+$'),
     t.Key('port'): t.Int(gte=0),
+    t.Key('proxy-port'): t.Int(gte=0),
 })
 
 

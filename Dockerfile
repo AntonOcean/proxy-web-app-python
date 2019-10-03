@@ -10,6 +10,7 @@ RUN pip install -r requirements.txt
 COPY . /proxy-app/
 
 EXPOSE 8080
+EXPOSE 9090
 
 WORKDIR /proxy-app/src
 
