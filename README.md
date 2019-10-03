@@ -8,9 +8,9 @@
 
 ### Запуск на машине
 ```sudo docker-compose build web``` <br><br>
-```sudo docker-compose up -d web``` <br><br>
+```sudo docker-compose up web``` <br><br>
 
-### Запуск на машине
+### Сервисы
 ```127.0.0.1:8080 - api для сохранения и повтора запросов``` <br><br>
 ```127.0.0.1:9090 - proxy сервер``` <br><br>
 
