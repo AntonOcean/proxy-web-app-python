@@ -42,6 +42,9 @@ async def proxy_request(request: Request):
     data = await request.read()
     get_data = request.rel_url.query
 
+    if not request.rel_url.is_absolute():
+        return web.Response(body='proxy', status=200)
+
     async with aiohttp.ClientSession() as session:
 
         if "Upgrade" in request.headers:
@@ -59,8 +62,12 @@ async def proxy_request(request: Request):
                             ws_c2p.send_str(data_p2s)
             return ws_c2p
         else:
+            # print("hi")
             async with session.request(request.method, request.rel_url, headers=request.headers, params=get_data, data=data) as resp:
                 res = resp
                 raw = await res.read()
-
-    return web.Response(body=raw, status=res.status, headers=res.headers)
+    # h = {k: v for k, v in res.headers.items()}
+    # print(h)
+    # # 'Transfer-Encoding': 'chunked', 'Vary': 'Accept-Encoding'
+    return web.Response(body=raw,
+                        status=res.status)
